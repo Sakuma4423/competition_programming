@@ -1,2 +1,2 @@
-# competition_programming
-競技プログラミング
+# 競技プログラミング
+競技プログラミング用
