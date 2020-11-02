@@ -7,8 +7,8 @@ int main()
     string value;
     cin >> value;
 
-    cmatch cmatch;
-    if (regex_search(value, cmatch, regex("(dream|dreamer|erase|eraser)+")))
+    smatch match_results;
+    if (regex_search(value, match_results, regex("^(dream|dreamer|erase|eraser)*$")))
     {
         cout << "YES" << endl;
     }
