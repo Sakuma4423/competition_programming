@@ -3,39 +3,39 @@
 using namespace std;
 
 /**
- * 引数の各桁を分割, 加算して返却する
- * 分割は最大5桁
- * @param int value 分割対象数列
- * @return array 分割後の値
+ * 偶数奇数判定
+ * true：偶数
+ * false：奇数
+ * @param int num 判定対象
+ * @return bool 判定結果
  */
-int sumSplitValue(int value)
+bool isEven(int num)
 {
-    // 分割
-    int array[4];
-    array[0] = value / 10000 % 10;
-    array[1] = value / 1000 % 10;
-    array[2] = value / 100 % 10;
-    array[3] = value / 10 % 10;
-    array[4] = value % 10;
-
-    return array[0] + array[1] + array[2] + array[3] + array[4];
+    return num % 2 == 0;
 }
 
-// TODO sakuma コピペのみ。修正入れる
 int main()
 {
     // 初期化
-    int value, min, max;
-    cin >> value >> min >> max;
-
-    int result = 0;
-    for (int i = 0; i <= value; i++)
+    int max;
+    cin >> max;
+    int arr[max];
+    for (int i = 0; i < max; i++)
     {
-        int sum_value = sumSplitValue(i);
-        if (sum_value >= min && sum_value <= max)
-            result += i;
+        cin >> arr[i];
+    }
+    sort(arr, arr + max);
+
+    int alice_score = 0;
+    int bob_score = 0;
+    for (int i = 0; i < max; i++)
+    {
+        if (isEven(i))
+            alice_score += arr[max - i - 1];
+        else
+            bob_score += arr[max - i - 1];
     }
 
-    cout << result << endl;
+    cout << alice_score - bob_score << endl;
     return 0;
 }
