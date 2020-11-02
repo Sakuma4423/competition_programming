@@ -21,8 +21,13 @@ int main()
         {
             for (int index_10000 = 0; index_10000 <= max_10000; index_10000++)
             {
+                // もらった価格以上 || もらったお札枚数以上
+                if (((10000 * index_10000 + 5000 * index_5000 + 1000 * index_1000) > price) || ((index_10000 + index_5000 + index_1000) > max))
+                {
+                    break;
+                }
                 // 合計値がpriceと同じ && お札数がmax以下
-                if (((10000 * index_10000 + 5000 * index_5000 + 1000 * index_1000) == price) && ((index_10000 + index_5000 + index_1000) <= max))
+                else if (((10000 * index_10000 + 5000 * index_5000 + 1000 * index_1000) == price) && ((index_10000 + index_5000 + index_1000) == max))
                 {
                     cout << index_10000 << " " << index_5000 << " " << index_1000 << endl;
                     return 0;
